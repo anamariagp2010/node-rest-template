@@ -1,0 +1,21 @@
+version: '3.5'
+
+volumes:
+  api-dependencies:
+
+services:
+  db:
+    image: mongo:4.4.0
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile.local
+    volumes:
+      - $PWD:/app/
+      - api-dependencies:/app/node_modules
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - db

@@ -1,0 +1,20 @@
+# Node files
+node_modules
+npm-debug.log
+
+# Docker files
+Dockerfile.local
+Dockerfile.release
+.dockerignore
+.cache
+
+# Environment files
+.env
+.env.sample
+.tool-versions
+
+# Project files
+test
+README.md
+.editorconfig
+jest.config.js
