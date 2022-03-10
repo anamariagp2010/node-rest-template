@@ -1,0 +1,23 @@
+FROM node:12-alpine
+
+WORKDIR /opt
+
+# Copy files used on the docker build because the volume will be mounted after the build.
+COPY package*.json ./
+
+# Fix "could not get uid/gid [ 'nobody', 0 ]" errors
+RUN npm config set unsafe-perm true
+
+# Install app dependencies
+ENV NPM_CONFIG_LOGLEVEL warn
+RUN npm install
+
+EXPOSE 3000
+
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+COPY wait-for-it.sh /usr/bin/
+
+ENTRYPOINT ["entrypoint.sh"]
+
+CMD [ "npm", "run", "dev" ]
