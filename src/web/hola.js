@@ -4,7 +4,7 @@ const thingsRouter = require('./things.router.sample'); // bin/cleanup mark
 const apiRouter = new Router({ prefix: '/api' });
 
 apiRouter.get('/', (ctx) => {
-  ctx.body = { hello: 'hola' };
+  ctx.body = { hello: 'Sofia' };
 });
 apiRouter.use('/things', thingsRouter.routes()); // bin/cleanup mark
 
